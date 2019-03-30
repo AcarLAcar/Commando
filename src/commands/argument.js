@@ -179,10 +179,10 @@ class Argument {
 
 			// Prompt the user for a new value
 			prompts.push(await msg.reply(stripIndents`
-				${empty ? this.prompt : valid ? valid : `You provided an invalid ${this.label}. Please try again.`}
+				${empty ? this.prompt : valid ? valid : `Geçersiz ${this.label} yazdın. Lütfen tekrar dene.`}
 				${oneLine`
-					Respond with \`cancel\` to cancel the command.
-					${wait ? `The command will automatically be cancelled in ${this.wait} seconds.` : ''}
+					\`iptal\` yazarak komutu iptal edebilirsin.
+					${wait ? `Komut otomatik olarak ${this.wait} saniye içinde iptal edilecek.` : ''}
 				`}
 			`));
 
@@ -206,7 +206,7 @@ class Argument {
 			}
 
 			// See if they want to cancel
-			if(value.toLowerCase() === 'cancel') {
+			if(value.toLowerCase() === 'iptal') {
 				return {
 					value: null,
 					cancelled: 'user',
