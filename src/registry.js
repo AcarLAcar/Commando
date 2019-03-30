@@ -252,7 +252,7 @@ class CommandRegistry {
 	registerDefaultGroups() {
 		return this.registerGroups([
 			['commands', 'Commands', true],
-			['util', 'Utility']
+			['genel', 'Genel komutlar']
 		]);
 	}
 
