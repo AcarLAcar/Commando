@@ -48,7 +48,7 @@ module.exports = class HelpCommand extends Command {
 					(\`${commands[0].groupID}:${commands[0].memberName}\`)
 				`}`;
 				if(commands[0].details) help += `\n**Detaylar:** ${commands[0].details}`;
-				if(commands[0].examples) help += `\n**Örnekler:**\n${commands[0].examples.join('\n')}`;
+				if(commands[0].examples) help += `\n**Örnekler:**\n${commands[0].examples.map(s => `\`${s}\``).join('\n')}`;
 
 				const messages = [];
 				try {
