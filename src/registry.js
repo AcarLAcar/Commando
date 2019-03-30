@@ -268,10 +268,10 @@ class CommandRegistry {
 	 * @return {CommandRegistry}
 	 */
 	registerDefaultCommands({ help = true, prefix = true, ping = true, eval_ = true, commandState = true } = {}) {
-		if(help) this.registerCommand(require('./commands/util/help'));
-		if(prefix) this.registerCommand(require('./commands/util/prefix'));
-		if(ping) this.registerCommand(require('./commands/util/ping'));
-		if(eval_) this.registerCommand(require('./commands/util/eval'));
+		if(help) this.registerCommand(require('./commands/genel/help'));
+		if(prefix) this.registerCommand(require('./commands/genel/prefix'));
+		if(ping) this.registerCommand(require('./commands/genel/ping'));
+		if(eval_) this.registerCommand(require('./commands/genel/eval'));
 		if(commandState) {
 			this.registerCommands([
 				require('./commands/commands/groups'),
