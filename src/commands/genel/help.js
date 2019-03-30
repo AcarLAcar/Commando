@@ -31,7 +31,7 @@ module.exports = class HelpCommand extends Command {
 		const groups = this.client.registry.groups;
 		const commands = this.client.registry.findCommands(args.komut, false, msg);
 		const showAll = args.komut && args.komut.toLowerCase() === 'hepsi';
-		if(args.command && !showAll) {
+		if(args.komut && !showAll) {
 			if(commands.length === 1) {
 				let help = stripIndents`
 					${oneLine`
@@ -78,12 +78,12 @@ module.exports = class HelpCommand extends Command {
 						${Command.usage('komut', msg.guild ? msg.guild.commandPrefix : null, this.client.user)} yazmalısın.
 						Örnek olarak, ${Command.usage('yardım', msg.guild ? msg.guild.commandPrefix : null, this.client.user)} yazabilirsin.
 					`}
-					Ayrıca bir komut kullanmak için DM'lerde sadece ${Command.usage('komut', null, null)} kullanabilirsin..
+					Ayrıca bir komut kullanmak için DM'lerde sadece ${Command.usage('komut', null, null)} kullanabilirsin.
 
 					${this.usage('<komut>', null, null)} kullanarak seçilen komut hakkında bilgi alabilirsin.
 					${this.usage('hepsi', null, null)} kullanarak *bütün* komutları görüntüleyebilirsin, sadece kullanabilir olanları değil.
 
-					__**${showAll ? 'Bütün komutlar' : `${msg.guild ? `${msg.guild} adlı sunucuda` : 'DM\'lerde'}`} kullanılabilen komutlar**__
+					__**${showAll ? 'Bütün komutlar' : `${msg.guild ? `${msg.guild} adlı sunucuda` : 'DM\'lerde kullanılabilen komutlar'}`}**__
 
 					${groups.filter(grp => grp.commands.some(cmd => !cmd.hidden && (showAll || cmd.isUsable(msg))))
 						.map(grp => stripIndents`
