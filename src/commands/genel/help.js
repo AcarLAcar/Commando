@@ -11,8 +11,8 @@ module.exports = class HelpCommand extends Command {
 			aliases: ['commands', 'help', 'y', 'komutlar'],
 			description: 'Komut listesini veya seçilen komut hakkında detaylı bilgileri gösterir.',
 			details: oneLine`
-				The command may be part of a command name or a whole command name.
-				If it isn't specified, all available commands will be listed.
+				Bir komut hakkında bilgi alınabilir veya
+				Tüm komutlar listelenebilir.
 			`,
 			examples: ['yardım', 'yardım prefix'],
 			guarded: true,
