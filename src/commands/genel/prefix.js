@@ -36,7 +36,7 @@ module.exports = class PrefixCommand extends Command {
 			const prefix = msg.guild ? msg.guild.commandPrefix : this.client.commandPrefix;
 			return msg.reply(stripIndents`
 				${prefix ? `Ön ek \`${prefix}\` olarak ayarlanmış.` : 'Herhangi bir ön ek ayarlanmamış.'}
-				To run commands, use ${msg.anyUsage('command')}.
+				${msg.anyUsage('komut')} yazarak komutları kullanabilirsin.
 			`);
 		}
 
@@ -56,13 +56,13 @@ module.exports = class PrefixCommand extends Command {
 		if(lowercase === 'default') {
 			if(msg.guild) msg.guild.commandPrefix = null; else this.client.commandPrefix = null;
 			const current = this.client.commandPrefix ? `\`${this.client.commandPrefix}\`` : 'bulunmuyor';
-			response = `Ön ek varsayılan olarak ayarlandı. (currently ${current}).`;
+			response = `Ön ek varsayılan olarak ayarlandı. (şuanki ${current}).`;
 		} else {
 			if(msg.guild) msg.guild.commandPrefix = prefix; else this.client.commandPrefix = prefix;
 			response = prefix ? `Ön ek \`${args.prefix}\` olarak ayarlandı.` : 'Ön ek kaldırıldı.';
 		}
 
-		await msg.reply(`${response} To run commands, use ${msg.anyUsage('komut')}.`);
+		await msg.reply(`${response} ${msg.anyUsage('komut')} yazarak komutları kullanabilirsin.`);
 		return null;
 	}
 };
