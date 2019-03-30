@@ -11,16 +11,16 @@ module.exports = class EvalCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'eval',
-			group: 'util',
+			group: 'genel',
 			memberName: 'eval',
-			description: 'Executes JavaScript code.',
-			details: 'Only the bot owner(s) may use this command.',
+			description: 'JavaScript kodu çalıştırır.',
+			details: 'Sadece bot geliştirici(leri) bu komutu kullanabilir.',
 			ownerOnly: true,
 
 			args: [
 				{
 					key: 'script',
-					prompt: 'What code would you like to evaluate?',
+					prompt: 'Hangi kodu çalıştırmak istersin?',
 					type: 'string'
 				}
 			]
@@ -61,7 +61,7 @@ module.exports = class EvalCommand extends Command {
 			this.lastResult = eval(args.script);
 			hrDiff = process.hrtime(hrStart);
 		} catch(err) {
-			return msg.reply(`Error while evaluating: \`${err}\``);
+			return msg.reply(`Çalıştırılırken bir hata oluştu: \`${err}\``);
 		}
 
 		// Prepare for callback time and respond
@@ -100,7 +100,7 @@ module.exports = class EvalCommand extends Command {
 					${input}
 					\`\`\`` :
 				''}
-				*Executed in ${hrDiff[0] > 0 ? `${hrDiff[0]}s ` : ''}${hrDiff[1] / 1000000}ms.*
+				*${hrDiff[0] > 0 ? `${hrDiff[0]}s ` : ''}${hrDiff[1] / 1000000}ms içinde çalıştırıldı.*
 				\`\`\`javascript
 				${inspected}
 				\`\`\`
