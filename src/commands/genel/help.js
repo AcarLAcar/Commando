@@ -30,7 +30,7 @@ module.exports = class HelpCommand extends Command {
 	async run(msg, args) {
 		const groups = this.client.registry.groups;
 		const commands = this.client.registry.findCommands(args.komut, false, msg);
-		const showAll = args.komut && args.command.toLowerCase() === 'hepsi';
+		const showAll = args.komut && args.komut.toLowerCase() === 'hepsi';
 		if(args.command && !showAll) {
 			if(commands.length === 1) {
 				let help = stripIndents`
@@ -74,7 +74,7 @@ module.exports = class HelpCommand extends Command {
 			try {
 				messages.push(await msg.direct(stripIndents`
 					${oneLine`
-						Bir komut kullanmak için ${msg.guild ? msg.guild.name : 'özel mesajlarda'}
+						Bir komut kullanmak için ${msg.guild ? `${msg.guild.name} adlı sunucuda` : 'DM\'lerde'}
 						${Command.usage('komut', msg.guild ? msg.guild.commandPrefix : null, this.client.user)} yazmalısın.
 						Örnek olarak, ${Command.usage('yardım', msg.guild ? msg.guild.commandPrefix : null, this.client.user)} yazabilirsin.
 					`}
